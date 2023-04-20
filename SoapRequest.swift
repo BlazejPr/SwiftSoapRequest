@@ -580,7 +580,13 @@ class SoapRequest: NSObject, StreamDelegate
  
     var recv: ((Dictionary<String,Any>) -> Void)? = nil
   
-   
+   /**
+        If you use https
+    */
+    public func  setOverHTTPS() { self.useSocket = false;  }
+    public func  disableHTTPS() { self.useSocket = true;  }
+    
+    
     func prepare(url:String, port:Int, urlParam:String, method:String, scheme: String)
     {
        
@@ -662,15 +668,56 @@ class SoapRequest: NSObject, StreamDelegate
         }
         else
         {
-            ///
+            self.sendRequestOverHttps()
         }
     
     
         
         return true;
     }
+   
     
+    private func sendRequestOverHttps()
+    {
+          let url = URL(string: self.url)!
+      
+          let session = URLSession.shared
+          var request = URLRequest(url: url)
+        
+          request.httpMethod = self.urlMethod
+          
+          request.setValue(self.soapActionBind, forHTTPHeaderField: "SOAPAction")
+          request.setValue("application/soap+xml", forHTTPHeaderField: "Content-Type")
+        
+          self.headers.forEach({ (h_name, h_value) in
+              request.setValue(h_value, forHTTPHeaderField: h_name)
+          })
+        
+        request.httpBody =  self.envelopeXMLRequest.data(using: .utf8)
+        
+          let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+                   
+              guard error == nil else {
+                  return
+              }
+                   
+              guard let data = data else {
+                  return
+              }
+                   
+             do {
+                 
+                 self.parseResponse(envelope: String(data: data, encoding: .utf8)! )
+                 
+             } catch let error {
+               print(error.localizedDescription)
+             }
+          })
+
+          task.resume()
+    }
     
+   
     
     private func sendRequestOverSocket()
     {
