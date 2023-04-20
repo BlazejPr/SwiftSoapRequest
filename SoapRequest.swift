@@ -700,7 +700,7 @@ class SoapRequest: NSObject, StreamDelegate
             }
             
             if(self.urlMethod.lowercased() == "get") {
-                http += "GET " + self.urlParam + "\r\n";
+                http += "GET " + self.urlParam  + " HTTP/1.1\r\n";
             }
 
             http += "SOAPAction: " + self.soapActionBind + "\r\n"
@@ -760,7 +760,7 @@ class SoapRequest: NSObject, StreamDelegate
             print(self.responseStr)
             
             let headers_content = self.responseStr.components(separatedBy: "\r\n\r\n")
-            if(headers_content.count == 2)
+            if(headers_content.count > 1 )
             {
                 self.parseResponse( envelope: headers_content[1] )
             }
