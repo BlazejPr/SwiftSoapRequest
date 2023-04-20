@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="gxh" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="gxh">
+<types>
+<xsd:schema elementFormDefault="qualified" targetNamespace="gxh">
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+ <xsd:complexType name="ResultAlarmZone">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pActive" type="xsd:int"/>
+   <xsd:element name="pOnType" type="xsd:int"/>
+   <xsd:element name="pOnTime" type="xsd:string"/>
+   <xsd:element name="pOnSensorName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultShort">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pNumFunction" type="xsd:int"/>
+   <xsd:element name="pNameFunction" type="xsd:string"/>
+   <xsd:element name="pResourceId" type="xsd:int"/>
+   <xsd:element name="pResourceName" type="xsd:string"/>
+   <xsd:element name="pResourceType" type="xsd:string"/>
+   <xsd:element name="pParam1" type="xsd:string"/>
+   <xsd:element name="pParam2" type="xsd:string"/>
+   <xsd:element name="pStatus" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultHome">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pAddr1" type="xsd:string"/>
+   <xsd:element name="pAddr2" type="xsd:string"/>
+   <xsd:element name="pLatitude" type="xsd:decimal"/>
+   <xsd:element name="pLongitude" type="xsd:decimal"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultSector">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pType" type="xsd:string"/>
+   <xsd:element name="pNumHomeTop" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultZone">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pType" type="xsd:string"/>
+   <xsd:element name="pNumSectorTop" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultLight">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pStatus" type="xsd:string"/>
+   <xsd:element name="pStatusTime" type="xsd:date"/>
+   <xsd:element name="pWat" type="xsd:integer"/>
+   <xsd:element name="pNumZoneTop" type="xsd:int"/>
+   <xsd:element name="pZoneName" type="xsd:string"/>
+   <xsd:element name="pNumSectorTop" type="xsd:int"/>
+   <xsd:element name="pSectorName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultOuts">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pStatus" type="xsd:string"/>
+   <xsd:element name="pNumZoneTop" type="xsd:int"/>
+   <xsd:element name="pZoneName" type="xsd:string"/>
+   <xsd:element name="pNumSectorTop" type="xsd:int"/>
+   <xsd:element name="pSectorName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultBlind">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pStatus" type="xsd:string"/>
+   <xsd:element name="pStatusTime" type="xsd:date"/>
+   <xsd:element name="pNumZoneTop" type="xsd:int"/>
+   <xsd:element name="pZoneName" type="xsd:string"/>
+   <xsd:element name="pNumSectorTop" type="xsd:int"/>
+   <xsd:element name="pSectorName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultGate">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pStatus" type="xsd:string"/>
+   <xsd:element name="pStatusTime" type="xsd:date"/>
+   <xsd:element name="pNumZoneTop" type="xsd:int"/>
+   <xsd:element name="pZoneName" type="xsd:string"/>
+   <xsd:element name="pType" type="xsd:int"/>
+   <xsd:element name="pNumSectorTop" type="xsd:int"/>
+   <xsd:element name="pSectorName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultDoor">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pStatus" type="xsd:string"/>
+   <xsd:element name="pNumZoneTop" type="xsd:int"/>
+   <xsd:element name="pZoneName" type="xsd:string"/>
+   <xsd:element name="pType" type="xsd:int"/>
+   <xsd:element name="pNumSectorTop" type="xsd:int"/>
+   <xsd:element name="pSectorName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultTemp">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pValue" type="xsd:string"/>
+   <xsd:element name="pNumZoneTop" type="xsd:int"/>
+   <xsd:element name="pZoneName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultSensor">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pStatus" type="xsd:string"/>
+   <xsd:element name="pStatusTime" type="xsd:date"/>
+   <xsd:element name="pNumZoneTop" type="xsd:int"/>
+   <xsd:element name="pSymbol" type="xsd:string"/>
+   <xsd:element name="pZoneName" type="xsd:string"/>
+   <xsd:element name="pAnalog" type="xsd:int"/>
+   <xsd:element name="pValue" type="xsd:string"/>
+   <xsd:element name="pNumSectorTop" type="xsd:int"/>
+   <xsd:element name="pSectorName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultScene">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultSceneAction">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pFuncId" type="xsd:int"/>
+   <xsd:element name="pResourceId" type="xsd:int"/>
+   <xsd:element name="pIndex" type="xsd:int"/>
+   <xsd:element name="pDelay" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pText" type="xsd:string"/>
+   <xsd:element name="pSceneId" type="xsd:int"/>
+   <xsd:element name="pNameFunction" type="xsd:string"/>
+   <xsd:element name="pResourceName" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultFunction">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pFuncName" type="xsd:string"/>
+   <xsd:element name="pFuncId" type="xsd:int"/>
+   <xsd:element name="pType" type="xsd:string"/>
+   <xsd:element name="pFuncService" type="xsd:int"/>
+   <xsd:element name="pDelay" type="xsd:int"/>
+   <xsd:element name="pResourceName" type="xsd:string"/>
+   <xsd:element name="pParam1Name" type="xsd:string"/>
+   <xsd:element name="pParam2Name" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultHistory">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pFuncId" type="xsd:int"/>
+   <xsd:element name="pResourceId" type="xsd:int"/>
+   <xsd:element name="pNameFunction" type="xsd:string"/>
+   <xsd:element name="pResourceName" type="xsd:string"/>
+   <xsd:element name="pUserId" type="xsd:int"/>
+   <xsd:element name="pParam1" type="xsd:string"/>
+   <xsd:element name="pParam2" type="xsd:string"/>
+   <xsd:element name="pDateTime" type="xsd:dateTime"/>
+   <xsd:element name="pUserName" type="xsd:string"/>
+   <xsd:element name="pZoneName" type="xsd:string"/>
+   <xsd:element name="pParam1Name" type="xsd:string"/>
+   <xsd:element name="pParam2Name" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultResource">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pResourceName" type="xsd:string"/>
+   <xsd:element name="pFuncId" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultNotice">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pTitle" type="xsd:string"/>
+   <xsd:element name="pText" type="xsd:string"/>
+   <xsd:element name="pType" type="xsd:string"/>
+   <xsd:element name="pDateTime" type="xsd:dateTime"/>
+   <xsd:element name="pFuncId" type="xsd:int"/>
+   <xsd:element name="pFuncModuleId" type="xsd:int"/>
+   <xsd:element name="pUserResponse" type="xsd:string"/>
+   <xsd:element name="pResourceId" type="xsd:int"/>
+   <xsd:element name="pFrom" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultUser">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pNick" type="xsd:string"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pLastName" type="xsd:string"/>
+   <xsd:element name="pPhone" type="xsd:string"/>
+   <xsd:element name="pLatitude" type="xsd:decimal"/>
+   <xsd:element name="pLongitude" type="xsd:decimal"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultUserInfo">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pNick" type="xsd:string"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pLastName" type="xsd:string"/>
+   <xsd:element name="pPhone" type="xsd:string"/>
+   <xsd:element name="pLatitude" type="xsd:decimal"/>
+   <xsd:element name="pLongitude" type="xsd:decimal"/>
+   <xsd:element name="pPrivilege" type="xsd:string"/>
+   <xsd:element name="pPrivGroup" type="xsd:string"/>
+   <xsd:element name="pPrivZone" type="xsd:string"/>
+   <xsd:element name="pAwatar" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultDriver">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pImage" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultDriverInterface">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pNumVar" type="xsd:int"/>
+   <xsd:element name="pNumFunction" type="xsd:int"/>
+   <xsd:element name="pNumModuleFunction" type="xsd:int"/>
+   <xsd:element name="pButtonName" type="xsd:string"/>
+   <xsd:element name="pSelectVal" type="xsd:string"/>
+   <xsd:element name="pIfVal" type="xsd:string"/>
+   <xsd:element name="pChart" type="xsd:string"/>
+   <xsd:element name="pAdmin" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultDriverApi">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pControlType" type="xsd:string"/>
+   <xsd:element name="pVal" type="xsd:string"/>
+   <xsd:element name="pLabelName" type="xsd:string"/>
+   <xsd:element name="pButtonName" type="xsd:string"/>
+   <xsd:element name="pValueType" type="xsd:string"/>
+   <xsd:element name="pFuncNum" type="xsd:int"/>
+   <xsd:element name="pFuncInterNum" type="xsd:int"/>
+   <xsd:element name="pSelVal" type="xsd:string"/>
+   <xsd:element name="pRepVal" type="xsd:string"/>
+   <xsd:element name="pPrStandard" type="xsd:string"/>
+   <xsd:element name="pPrStandardPlus" type="xsd:string"/>
+   <xsd:element name="pPrAdministrator" type="xsd:string"/>
+   <xsd:element name="pPrSystem" type="xsd:string"/>
+   <xsd:element name="pNumDriverVar" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultDriverImage">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pLocalPath" type="xsd:string"/>
+   <xsd:element name="pImage" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultDriverVar">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pNumVar" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pValue" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultTimer">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pNumFunction" type="xsd:int"/>
+   <xsd:element name="pNameFunction" type="xsd:string"/>
+   <xsd:element name="pResourceId" type="xsd:int"/>
+   <xsd:element name="pResourceName" type="xsd:string"/>
+   <xsd:element name="pFirstStart" type="xsd:dateTime"/>
+   <xsd:element name="pRepeatWeek" type="xsd:string"/>
+   <xsd:element name="pMonDay" type="xsd:string"/>
+   <xsd:element name="pTueDay" type="xsd:string"/>
+   <xsd:element name="pWedDay" type="xsd:string"/>
+   <xsd:element name="pThuDay" type="xsd:string"/>
+   <xsd:element name="pFriDay" type="xsd:string"/>
+   <xsd:element name="pSatDay" type="xsd:string"/>
+   <xsd:element name="pSunDay" type="xsd:string"/>
+   <xsd:element name="pParam1" type="xsd:string"/>
+   <xsd:element name="pParam2" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="ResultCamera">
+  <xsd:all>
+   <xsd:element name="pId" type="xsd:int"/>
+   <xsd:element name="pName" type="xsd:string"/>
+   <xsd:element name="pIP" type="xsd:string"/>
+   <xsd:element name="pExtraParam" type="xsd:string"/>
+   <xsd:element name="pProtocol" type="xsd:string"/>
+   <xsd:element name="pURL" type="xsd:string"/>
+   <xsd:element name="pVideoPhone" type="xsd:string"/>
+   <xsd:element name="pLocalPort" type="xsd:int"/>
+   <xsd:element name="pRemotePort" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+</xsd:schema>
+</types>
+<message name="goLoginRequest">
+  <part name="username" type="xsd:string"/>
+  <part name="password" type="xsd:string"/>
+  <part name="app_version" type="xsd:string"/>
+  <part name="api_version" type="xsd:string"/>
+  <part name="public_key" type="xsd:string"/>
+  <part name="type" type="xsd:string"/></message>
+<message name="goLoginResponse">
+  <part name="result" type="xsd:string"/>
+  <part name="privilege" type="xsd:string"/></message>
+<message name="goLogoutRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="goLogoutResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="goCloseRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="goCloseResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="goReloadModulesRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="goReloadModulesResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="goReloadPortsRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="goReloadPortsResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="goRefreshRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="lat" type="xsd:decimal"/>
+  <part name="lng" type="xsd:decimal"/>
+  <part name="locationTime" type="xsd:string"/>
+  <part name="locationTimeMs" type="xsd:int"/>
+  <part name="bluetoothName" type="xsd:string"/>
+  <part name="wifiName" type="xsd:string"/>
+  <part name="beacon" type="xsd:string"/></message>
+<message name="goRefreshResponse">
+  <part name="result" type="xsd:string"/>
+  <part name="notice" type="xsd:ResultNotice"/></message>
+<message name="getInfoRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getInfoResponse">
+  <part name="result" type="xsd:ResultUserInfo"/></message>
+<message name="setMsgStatusRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numMsg" type="xsd:int"/>
+  <part name="numStatus" type="xsd:int"/></message>
+<message name="setMsgStatusResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="setAddressRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="driverId" type="xsd:int"/>
+  <part name="parity" type="xsd:string"/>
+  <part name="dataBit" type="xsd:string"/>
+  <part name="stopBit" type="xsd:string"/>
+  <part name="speed" type="xsd:int"/></message>
+<message name="setAddressResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="getVerAppRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getVerAppResponse">
+  <part name="new_version" type="xsd:string"/>
+  <part name="now_version" type="xsd:string"/></message>
+<message name="setMobileCodeRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="type" type="xsd:int"/>
+  <part name="code" type="xsd:string"/>
+  <part name="distance" type="xsd:string"/>
+  <part name="is_near" type="xsd:string"/>
+  <part name="param1" type="xsd:string"/>
+  <part name="param2" type="xsd:string"/></message>
+<message name="setMobileCodeResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="setDebugLevelRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="level" type="xsd:integer"/></message>
+<message name="setDebugLevelResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="clickPortRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="portId" type="xsd:integer"/></message>
+<message name="clickPortResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="getVersionRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getVersionResponse">
+  <part name="ver_gxh" type="xsd:string"/>
+  <part name="ver_linux" type="xsd:string"/>
+  <part name="auth" type="xsd:string"/>
+  <part name="info" type="xsd:string"/></message>
+<message name="executeSimplyFunctionRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numFunction" type="xsd:integer"/>
+  <part name="numResource" type="xsd:integer"/></message>
+<message name="executeSimplyFunctionResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="executeParamFunctionRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numFunction" type="xsd:integer"/>
+  <part name="numResource" type="xsd:integer"/>
+  <part name="param_1" type="xsd:string"/>
+  <part name="param_2" type="xsd:string"/></message>
+<message name="executeParamFunctionResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="executeDriverFunctionRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numDriver" type="xsd:integer"/>
+  <part name="numFunction" type="xsd:integer"/>
+  <part name="param" type="xsd:string"/></message>
+<message name="executeDriverFunctionResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="executeSysRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="num" type="xsd:integer"/></message>
+<message name="executeSysResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="getAllHomeRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numTop" type="xsd:integer"/></message>
+<message name="getAllHomeResponse">
+  <part name="result" type="xsd:ResultHome"/></message>
+<message name="getAllSectorRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numHomeTop" type="xsd:integer"/></message>
+<message name="getAllSectorResponse">
+  <part name="result" type="xsd:ResultSector"/></message>
+<message name="getAllZoneRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numSectorTop" type="xsd:integer"/></message>
+<message name="getAllZoneResponse">
+  <part name="result" type="xsd:ResultZone"/></message>
+<message name="getAllLightRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numZoneTop" type="xsd:integer"/>
+  <part name="numSectorTop" type="xsd:integer"/></message>
+<message name="getAllLightResponse">
+  <part name="result" type="xsd:ResultLight"/></message>
+<message name="getAllOutsRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numZoneTop" type="xsd:integer"/>
+  <part name="numSectorTop" type="xsd:integer"/></message>
+<message name="getAllOutsResponse">
+  <part name="result" type="xsd:ResultOuts"/></message>
+<message name="getAllBlindRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numZoneTop" type="xsd:integer"/>
+  <part name="numSectorTop" type="xsd:integer"/></message>
+<message name="getAllBlindResponse">
+  <part name="result" type="xsd:ResultBlind"/></message>
+<message name="getAllGateRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numZoneTop" type="xsd:integer"/>
+  <part name="numSectorTop" type="xsd:integer"/></message>
+<message name="getAllGateResponse">
+  <part name="result" type="xsd:ResultGate"/></message>
+<message name="getAllDoorRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numZoneTop" type="xsd:integer"/>
+  <part name="numSectorTop" type="xsd:integer"/></message>
+<message name="getAllDoorResponse">
+  <part name="result" type="xsd:ResultDoor"/></message>
+<message name="getAllTempRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numZoneTop" type="xsd:integer"/>
+  <part name="numSectorTop" type="xsd:integer"/></message>
+<message name="getAllTempResponse">
+  <part name="result" type="xsd:ResultTemp"/></message>
+<message name="getAllSensorRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numZoneTop" type="xsd:integer"/>
+  <part name="numSectorTop" type="xsd:integer"/></message>
+<message name="getAllSensorResponse">
+  <part name="result" type="xsd:ResultSensor"/></message>
+<message name="getAllSceneRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getAllSceneResponse">
+  <part name="result" type="xsd:ResultScene"/></message>
+<message name="getAllSceneActionRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="numSceneId" type="xsd:integer"/></message>
+<message name="getAllSceneActionResponse">
+  <part name="result" type="xsd:ResultSceneAction"/></message>
+<message name="getAllFunctionRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getAllFunctionResponse">
+  <part name="result" type="xsd:ResultFunction"/></message>
+<message name="getFuncResourceRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getFuncResourceResponse">
+  <part name="result" type="xsd:ResultResource"/></message>
+<message name="getAllUserRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getAllUserResponse">
+  <part name="result" type="xsd:ResultUser"/></message>
+<message name="getAllDriverRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getAllDriverResponse">
+  <part name="result" type="xsd:ResultDriver"/></message>
+<message name="getAllDriverInterfaceRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pIdDriver" type="xsd:int"/></message>
+<message name="getAllDriverInterfaceResponse">
+  <part name="result" type="xsd:ResultDriverInterface"/>
+  <part name="images" type="xsd:ResultDriverImage"/></message>
+<message name="getAllDriverApiRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pIdDriver" type="xsd:int"/></message>
+<message name="getAllDriverApiResponse">
+  <part name="result" type="xsd:ResultDriverApi"/>
+  <part name="images" type="xsd:ResultDriverImage"/></message>
+<message name="getAllDriverVarsRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pIdDriver" type="xsd:int"/></message>
+<message name="getAllDriverVarsResponse">
+  <part name="result" type="xsd:ResultDriverVar"/></message>
+<message name="addSceneRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="sceneName" type="xsd:string"/></message>
+<message name="addSceneResponse">
+  <part name="result" type="xsd:string"/>
+  <part name="pId" type="xsd:int"/></message>
+<message name="addActionSceneRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pIdScene" type="xsd:int"/>
+  <part name="pFuncCode" type="xsd:int"/>
+  <part name="pResourceId" type="xsd:int"/>
+  <part name="pParam1" type="xsd:string"/>
+  <part name="pParam2" type="xsd:string"/></message>
+<message name="addActionSceneResponse">
+  <part name="result" type="xsd:string"/>
+  <part name="pId" type="xsd:int"/></message>
+<message name="removeSceneRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pIdScene" type="xsd:int"/></message>
+<message name="removeSceneResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="removeActionSceneRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pIdActionScene" type="xsd:int"/></message>
+<message name="removeActionSceneResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="addNoticeStatusRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pIdNotice" type="xsd:integer"/>
+  <part name="pNumStatus" type="xsd:integer"/></message>
+<message name="addNoticeStatusResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="getAllTimerRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getAllTimerResponse">
+  <part name="result" type="xsd:ResultTimer"/></message>
+<message name="addTimerRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pNumFunction" type="xsd:string"/>
+  <part name="pResourceId" type="xsd:int"/>
+  <part name="pFirstStart" type="xsd:dateTime"/>
+  <part name="pRepeatWeek" type="xsd:string"/>
+  <part name="pMonDay" type="xsd:string"/>
+  <part name="pTueDay" type="xsd:string"/>
+  <part name="pWedDay" type="xsd:string"/>
+  <part name="pThuDay" type="xsd:string"/>
+  <part name="pFriDay" type="xsd:string"/>
+  <part name="pSatDay" type="xsd:string"/>
+  <part name="pSunDay" type="xsd:string"/>
+  <part name="param1" type="xsd:string"/>
+  <part name="param2" type="xsd:string"/></message>
+<message name="addTimerResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="removeTimerRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pIdTimer" type="xsd:int"/></message>
+<message name="removeTimerResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="getAllCameraRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getAllCameraResponse">
+  <part name="result" type="xsd:ResultCamera"/></message>
+<message name="getAllHistoryRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="dateTimeFrom" type="xsd:string"/>
+  <part name="dateTimeTo" type="xsd:string"/></message>
+<message name="getAllHistoryResponse">
+  <part name="result" type="xsd:ResultHistory"/></message>
+<message name="getAllAlarmZoneRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getAllAlarmZoneResponse">
+  <part name="result" type="xsd:ResultAlarmZone"/></message>
+<message name="getAllShortRequest">
+  <part name="sid" type="xsd:string"/></message>
+<message name="getAllShortResponse">
+  <part name="result" type="xsd:ResultShort"/></message>
+<message name="removeShortRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pNumFunction" type="xsd:int"/>
+  <part name="pResourceId" type="xsd:int"/></message>
+<message name="removeShortResponse">
+  <part name="result" type="xsd:string"/></message>
+<message name="addShortRequest">
+  <part name="sid" type="xsd:string"/>
+  <part name="pNumFunction" type="xsd:int"/>
+  <part name="pResourceId" type="xsd:int"/>
+  <part name="pParam1" type="xsd:string"/>
+  <part name="pParam2" type="xsd:string"/></message>
+<message name="addShortResponse">
+  <part name="result" type="xsd:string"/></message>
+<portType name="GXHPortType">
+  <operation name="goLogin">
+    <input message="tns:goLoginRequest"/>
+    <output message="tns:goLoginResponse"/>
+  </operation>
+  <operation name="goLogout">
+    <input message="tns:goLogoutRequest"/>
+    <output message="tns:goLogoutResponse"/>
+  </operation>
+  <operation name="goClose">
+    <input message="tns:goCloseRequest"/>
+    <output message="tns:goCloseResponse"/>
+  </operation>
+  <operation name="goReloadModules">
+    <input message="tns:goReloadModulesRequest"/>
+    <output message="tns:goReloadModulesResponse"/>
+  </operation>
+  <operation name="goReloadPorts">
+    <input message="tns:goReloadPortsRequest"/>
+    <output message="tns:goReloadPortsResponse"/>
+  </operation>
+  <operation name="goRefresh">
+    <input message="tns:goRefreshRequest"/>
+    <output message="tns:goRefreshResponse"/>
+  </operation>
+  <operation name="getInfo">
+    <input message="tns:getInfoRequest"/>
+    <output message="tns:getInfoResponse"/>
+  </operation>
+  <operation name="setMsgStatus">
+    <input message="tns:setMsgStatusRequest"/>
+    <output message="tns:setMsgStatusResponse"/>
+  </operation>
+  <operation name="setAddress">
+    <input message="tns:setAddressRequest"/>
+    <output message="tns:setAddressResponse"/>
+  </operation>
+  <operation name="getVerApp">
+    <input message="tns:getVerAppRequest"/>
+    <output message="tns:getVerAppResponse"/>
+  </operation>
+  <operation name="setMobileCode">
+    <input message="tns:setMobileCodeRequest"/>
+    <output message="tns:setMobileCodeResponse"/>
+  </operation>
+  <operation name="setDebugLevel">
+    <input message="tns:setDebugLevelRequest"/>
+    <output message="tns:setDebugLevelResponse"/>
+  </operation>
+  <operation name="clickPort">
+    <input message="tns:clickPortRequest"/>
+    <output message="tns:clickPortResponse"/>
+  </operation>
+  <operation name="getVersion">
+    <input message="tns:getVersionRequest"/>
+    <output message="tns:getVersionResponse"/>
+  </operation>
+  <operation name="executeSimplyFunction">
+    <input message="tns:executeSimplyFunctionRequest"/>
+    <output message="tns:executeSimplyFunctionResponse"/>
+  </operation>
+  <operation name="executeParamFunction">
+    <input message="tns:executeParamFunctionRequest"/>
+    <output message="tns:executeParamFunctionResponse"/>
+  </operation>
+  <operation name="executeDriverFunction">
+    <input message="tns:executeDriverFunctionRequest"/>
+    <output message="tns:executeDriverFunctionResponse"/>
+  </operation>
+  <operation name="executeSys">
+    <input message="tns:executeSysRequest"/>
+    <output message="tns:executeSysResponse"/>
+  </operation>
+  <operation name="getAllHome">
+    <input message="tns:getAllHomeRequest"/>
+    <output message="tns:getAllHomeResponse"/>
+  </operation>
+  <operation name="getAllSector">
+    <input message="tns:getAllSectorRequest"/>
+    <output message="tns:getAllSectorResponse"/>
+  </operation>
+  <operation name="getAllZone">
+    <input message="tns:getAllZoneRequest"/>
+    <output message="tns:getAllZoneResponse"/>
+  </operation>
+  <operation name="getAllLight">
+    <input message="tns:getAllLightRequest"/>
+    <output message="tns:getAllLightResponse"/>
+  </operation>
+  <operation name="getAllOuts">
+    <input message="tns:getAllOutsRequest"/>
+    <output message="tns:getAllOutsResponse"/>
+  </operation>
+  <operation name="getAllBlind">
+    <input message="tns:getAllBlindRequest"/>
+    <output message="tns:getAllBlindResponse"/>
+  </operation>
+  <operation name="getAllGate">
+    <input message="tns:getAllGateRequest"/>
+    <output message="tns:getAllGateResponse"/>
+  </operation>
+  <operation name="getAllDoor">
+    <input message="tns:getAllDoorRequest"/>
+    <output message="tns:getAllDoorResponse"/>
+  </operation>
+  <operation name="getAllTemp">
+    <input message="tns:getAllTempRequest"/>
+    <output message="tns:getAllTempResponse"/>
+  </operation>
+  <operation name="getAllSensor">
+    <input message="tns:getAllSensorRequest"/>
+    <output message="tns:getAllSensorResponse"/>
+  </operation>
+  <operation name="getAllScene">
+    <input message="tns:getAllSceneRequest"/>
+    <output message="tns:getAllSceneResponse"/>
+  </operation>
+  <operation name="getAllSceneAction">
+    <input message="tns:getAllSceneActionRequest"/>
+    <output message="tns:getAllSceneActionResponse"/>
+  </operation>
+  <operation name="getAllFunction">
+    <input message="tns:getAllFunctionRequest"/>
+    <output message="tns:getAllFunctionResponse"/>
+  </operation>
+  <operation name="getFuncResource">
+    <input message="tns:getFuncResourceRequest"/>
+    <output message="tns:getFuncResourceResponse"/>
+  </operation>
+  <operation name="getAllUser">
+    <input message="tns:getAllUserRequest"/>
+    <output message="tns:getAllUserResponse"/>
+  </operation>
+  <operation name="getAllDriver">
+    <input message="tns:getAllDriverRequest"/>
+    <output message="tns:getAllDriverResponse"/>
+  </operation>
+  <operation name="getAllDriverInterface">
+    <input message="tns:getAllDriverInterfaceRequest"/>
+    <output message="tns:getAllDriverInterfaceResponse"/>
+  </operation>
+  <operation name="getAllDriverApi">
+    <input message="tns:getAllDriverApiRequest"/>
+    <output message="tns:getAllDriverApiResponse"/>
+  </operation>
+  <operation name="getAllDriverVars">
+    <input message="tns:getAllDriverVarsRequest"/>
+    <output message="tns:getAllDriverVarsResponse"/>
+  </operation>
+  <operation name="addScene">
+    <input message="tns:addSceneRequest"/>
+    <output message="tns:addSceneResponse"/>
+  </operation>
+  <operation name="addActionScene">
+    <input message="tns:addActionSceneRequest"/>
+    <output message="tns:addActionSceneResponse"/>
+  </operation>
+  <operation name="removeScene">
+    <input message="tns:removeSceneRequest"/>
+    <output message="tns:removeSceneResponse"/>
+  </operation>
+  <operation name="removeActionScene">
+    <input message="tns:removeActionSceneRequest"/>
+    <output message="tns:removeActionSceneResponse"/>
+  </operation>
+  <operation name="addNoticeStatus">
+    <input message="tns:addNoticeStatusRequest"/>
+    <output message="tns:addNoticeStatusResponse"/>
+  </operation>
+  <operation name="getAllTimer">
+    <input message="tns:getAllTimerRequest"/>
+    <output message="tns:getAllTimerResponse"/>
+  </operation>
+  <operation name="addTimer">
+    <input message="tns:addTimerRequest"/>
+    <output message="tns:addTimerResponse"/>
+  </operation>
+  <operation name="removeTimer">
+    <input message="tns:removeTimerRequest"/>
+    <output message="tns:removeTimerResponse"/>
+  </operation>
+  <operation name="getAllCamera">
+    <input message="tns:getAllCameraRequest"/>
+    <output message="tns:getAllCameraResponse"/>
+  </operation>
+  <operation name="getAllHistory">
+    <input message="tns:getAllHistoryRequest"/>
+    <output message="tns:getAllHistoryResponse"/>
+  </operation>
+  <operation name="getAllAlarmZone">
+    <input message="tns:getAllAlarmZoneRequest"/>
+    <output message="tns:getAllAlarmZoneResponse"/>
+  </operation>
+  <operation name="getAllShort">
+    <input message="tns:getAllShortRequest"/>
+    <output message="tns:getAllShortResponse"/>
+  </operation>
+  <operation name="removeShort">
+    <input message="tns:removeShortRequest"/>
+    <output message="tns:removeShortResponse"/>
+  </operation>
+  <operation name="addShort">
+    <input message="tns:addShortRequest"/>
+    <output message="tns:addShortResponse"/>
+  </operation>
+</portType>
+<binding name="GXHBinding" type="tns:GXHPortType">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="goLogin">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,gologin" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="goLogout">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,gologout" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="goClose">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,goclose" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="goReloadModules">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,go_reload_modules" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="goReloadPorts">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,go_reload_ports" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="goRefresh">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,gorefresh" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getInfo">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,getinfo" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="setMsgStatus">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,set_msg_status" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="setAddress">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,set_address" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getVerApp">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_ver_app" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="setMobileCode">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,set_mobile_code" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="setDebugLevel">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,set_debug_level" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="clickPort">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,port_click" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getVersion">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_version" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="executeSimplyFunction">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,ex_simply_func" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="executeParamFunction">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,ex_param_func" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="executeDriverFunction">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,ex_driver_func" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="executeSys">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,ex_sys" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllHome">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_home" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllSector">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_sector" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllZone">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_zone" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllLight">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_light" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllOuts">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_outs" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllBlind">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_blind" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllGate">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_gate" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllDoor">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_door" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllTemp">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_temp" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllSensor">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_sensor" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllScene">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_scene" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllSceneAction">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_scene_action" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllFunction">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_function" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getFuncResource">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_func_resource" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllUser">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_user" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllDriver">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_driver" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllDriverInterface">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_driver_interface" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllDriverApi">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_driver_api" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllDriverVars">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_driver_vars" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="addScene">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,add_scene" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="addActionScene">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,add_action_scene" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="removeScene">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,remove_scene" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="removeActionScene">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,remove_action_scene" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="addNoticeStatus">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,add_notice_status" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllTimer">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_timer" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="addTimer">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,add_timer" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="removeTimer">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,remove_timer" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllCamera">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_camera" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllHistory">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_history" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllAlarmZone">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_alarm_zone" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="getAllShort">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,get_all_short" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="removeShort">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,remove_short" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+  <operation name="addShort">
+    <soap:operation soapAction="http://192.168.0.230:7777/wsdl,add_short" style="rpc"/>
+    <input><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="gxh" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+</binding>
+<service name="GXH">
+  <port name="GXHPort" binding="tns:GXHBinding">
+    <soap:address location="http://192.168.0.230:7777/wsdl"/>
+  </port>
+</service>
+</definitions>
